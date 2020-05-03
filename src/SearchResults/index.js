@@ -1,7 +1,5 @@
 import React, { useState } from 'react';
-import ReactTooltip from "react-tooltip";
-
-import { OPEN_SUB_URL } from '../constants';
+import ReactTooltip from 'react-tooltip';
 
 import { ItemList, CoverImage } from './styles';
 
@@ -13,14 +11,9 @@ const SearchResults = ({ omdbResults, formValues }) => {
 
   const selectEntry = movie => {
     setSelectedEntry(movie);
-    fetch(`${OPEN_SUB_URL}imdbid-${movie.imdbID.replace(new RegExp(/tt/, 'gmi'), '')}/sublanguageid-${lang}${season ? `/season-${season}` : ''}${episode ? `/episode-${episode}` : ''}`, {
-      mode: 'no-cors',
-      headers: {
-        'user-agent': process.env.OPEN_SUB_USER_AGENT,
-      }
-    });
-    // console.log(`${OPEN_SUB_URL}imdbid-${movie.imdbID.replace(new RegExp(/tt/, 'gmi'), '')}/sublanguageid-${lang}${season ? `/season-${season}` : ''}${episode ? `/episode-${episode}` : ''}`);
-
+    // Seems like open subtitles is killing XML and REST services favoring a new API but it's on
+    // its early stages, this projects stays on hold.
+    // forum entry: https://www.opensubtitles.com/docs/api/html/index.htm
     console.log(movie);
   };
 
